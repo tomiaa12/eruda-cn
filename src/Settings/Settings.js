@@ -17,6 +17,7 @@ export default class Settings extends Tool {
     this._style = evalCss(require('./Settings.scss'))
 
     this.name = 'settings'
+    this.title = '设置'
     this._settings = []
   }
   init($el) {

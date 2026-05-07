@@ -18,6 +18,7 @@ export default class Info extends Tool {
     this._style = evalCss(require('./Info.scss'))
 
     this.name = 'info'
+    this.title = '系统信息'
     this._infos = []
   }
   init($el, container) {

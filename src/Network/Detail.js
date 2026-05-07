@@ -34,7 +34,7 @@ export default class Detail extends Emitter {
       postData = `<pre class="${c('data')}">${escape(data.data)}</pre>`
     }
 
-    let reqHeaders = '<tr><td>Empty</td></tr>'
+    let reqHeaders = '<tr><td>空</td></tr>'
     if (data.reqHeaders) {
       reqHeaders = map(data.reqHeaders, (val, key) => {
         return `<tr>
@@ -44,7 +44,7 @@ export default class Detail extends Emitter {
       }).join('')
     }
 
-    let resHeaders = '<tr><td>Empty</td></tr>'
+    let resHeaders = '<tr><td>空</td></tr>'
     if (data.resHeaders) {
       resHeaders = map(data.resHeaders, (val, key) => {
         return `<tr>
@@ -72,7 +72,7 @@ export default class Detail extends Emitter {
     <div class="${c('http')}">
       ${postData}
       <div class="${c('section')}">
-        <h2>Response Headers</h2>
+        <h2>响应头</h2>
         <table class="${c('headers')}">
           <tbody>
             ${resHeaders}
@@ -80,7 +80,7 @@ export default class Detail extends Emitter {
         </table>
       </div>
       <div class="${c('section')}">
-        <h2>Request Headers</h2>
+        <h2>请求头</h2>
         <table class="${c('headers')}">
           <tbody>
             ${reqHeaders}
@@ -102,15 +102,15 @@ export default class Detail extends Emitter {
 
     let data = `${detailData.method} ${detailData.url} ${detailData.status}\n`
     if (!isEmpty(detailData.data)) {
-      data += '\nRequest Data\n\n'
+      data += '\n请求数据\n\n'
       data += `${detailData.data}\n`
     }
     if (!isEmpty(detailData.reqHeaders)) {
-      data += '\nRequest Headers\n\n'
+      data += '\n请求头\n\n'
       each(detailData.reqHeaders, (val, key) => (data += `${key}: ${val}\n`))
     }
     if (!isEmpty(detailData.resHeaders)) {
-      data += '\nResponse Headers\n\n'
+      data += '\n响应头\n\n'
       each(detailData.resHeaders, (val, key) => (data += `${key}: ${val}\n`))
     }
     if (detailData.resTxt) {

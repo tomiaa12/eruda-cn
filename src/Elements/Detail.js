@@ -149,7 +149,7 @@ export default class Detail {
 
     $elementName.html(data.name)
 
-    let attributes = '<tr><td>Empty</td></tr>'
+    let attributes = '<tr><td>空</td></tr>'
     if (!isEmpty(data.attributes)) {
       attributes = map(data.attributes, ({ name, value }) => {
         return `<tr>
@@ -158,7 +158,7 @@ export default class Detail {
         </tr>`
       }).join('')
     }
-    attributes = `<h2>Attributes</h2>
+    attributes = `<h2>属性</h2>
     <div class="${c('table-wrapper')}">
       <table>
         <tbody>
@@ -182,7 +182,7 @@ export default class Detail {
           <div>}</div>
         </div>`
       }).join('')
-      styles = `<h2>Styles</h2>
+      styles = `<h2>样式</h2>
       <div class="${c('style-wrapper')}">
         ${style}
       </div>`
@@ -203,7 +203,7 @@ export default class Detail {
       }
 
       computedStyle = `<h2>
-        Computed Style
+        计算样式
         ${toggleButton}
         <div class="${c('btn computed-style-search')}">
           <span class="${c('icon-filter')}"></span>
@@ -252,7 +252,7 @@ export default class Detail {
           </ul>
         </div>`
       }).join('')
-      listeners = `<h2>Event Listeners</h2>
+      listeners = `<h2>事件监听器</h2>
       <div class="${c('listener-wrapper')}">
         ${listeners} 
       </div>`
@@ -314,7 +314,7 @@ export default class Detail {
         this._toggleAllComputedStyle()
       )
       .on('click', c('.computed-style-search'), () => {
-        LunaModal.prompt('Filter').then((filter) => {
+        LunaModal.prompt('查找').then((filter) => {
           if (isNull(filter)) return
           filter = trim(filter)
           this._computedStyleSearchKeyword = filter

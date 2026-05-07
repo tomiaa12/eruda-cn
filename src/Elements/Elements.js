@@ -25,6 +25,7 @@ export default class Elements extends Tool {
     this._style = evalCss(require('./Elements.scss'))
 
     this.name = 'elements'
+    this.title = '元素'
     this._selectElement = false
     this._observeElement = true
     this._history = []

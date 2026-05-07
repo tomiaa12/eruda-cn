@@ -15,6 +15,7 @@ export default class Snippets extends Tool {
     this._style = evalCss(require('./Snippets.scss'))
 
     this.name = 'snippets'
+    this.title = '插件'
 
     this._snippets = []
   }

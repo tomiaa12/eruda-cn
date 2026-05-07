@@ -25,6 +25,7 @@ export default class Resources extends Tool {
     this._style = evalCss(require('./Resources.scss'))
 
     this.name = 'resources'
+    this.title = '资源'
     this._hideErudaSetting = false
     this._observeElement = true
   }
@@ -82,7 +83,7 @@ export default class Resources extends Tool {
     scriptData = unique(scriptData)
 
     const scriptState = getState('script', scriptData.length)
-    let scriptDataHtml = '<li>Empty</li>'
+    let scriptDataHtml = '<li>空</li>'
     if (!isEmpty(scriptData)) {
       scriptDataHtml = map(scriptData, (script) => {
         script = escape(script)
@@ -93,7 +94,7 @@ export default class Resources extends Tool {
     }
 
     const scriptHtml = `<h2 class="${c('title')}">
-      Script
+      脚本
       <div class="${c('btn refresh-script')}">
         <span class="${c('icon-refresh')}"></span>
       </div>
@@ -120,7 +121,7 @@ export default class Resources extends Tool {
     stylesheetData = unique(stylesheetData)
 
     const stylesheetState = getState('stylesheet', stylesheetData.length)
-    let stylesheetDataHtml = '<li>Empty</li>'
+    let stylesheetDataHtml = '<li>空</li>'
     if (!isEmpty(stylesheetData)) {
       stylesheetDataHtml = map(stylesheetData, (stylesheet) => {
         stylesheet = escape(stylesheet)
@@ -131,7 +132,7 @@ export default class Resources extends Tool {
     }
 
     const stylesheetHtml = `<h2 class="${c('title')}">
-      Stylesheet
+      样式表
       <div class="${c('btn refresh-stylesheet')}">
         <span class="${c('icon-refresh')}"></span>
       </div>
@@ -158,7 +159,7 @@ export default class Resources extends Tool {
 
     iframeData = unique(iframeData)
 
-    let iframeDataHtml = '<li>Empty</li>'
+    let iframeDataHtml = '<li>空</li>'
     if (!isEmpty(iframeData)) {
       iframeDataHtml = map(iframeData, (iframe) => {
         iframe = escape(iframe)
@@ -168,7 +169,7 @@ export default class Resources extends Tool {
       }).join('')
     }
     const iframeHtml = `<h2 class="${c('title')}">
-      Iframe
+      iframe
       <div class="${c('btn refresh-iframe')}">
         <span class="${c('icon-refresh')}"></span>
       </div>
@@ -228,7 +229,7 @@ export default class Resources extends Tool {
     imageData.sort()
 
     const imageState = getState('image', imageData.length)
-    let imageDataHtml = '<li>Empty</li>'
+    let imageDataHtml = '<li>空</li>'
     if (!isEmpty(imageData)) {
       // prettier-ignore
       imageDataHtml = map(imageData, (image) => {
@@ -239,7 +240,7 @@ export default class Resources extends Tool {
     }
 
     const imageHtml = `<h2 class="${c('title')}">
-      Image
+      图片
       <div class="${c('btn refresh-image')}">
         <span class="${c('icon-refresh')}"></span>
       </div>

@@ -19,6 +19,7 @@ export default class Sources extends Tool {
     this._style = evalCss(require('./Sources.scss'))
 
     this.name = 'sources'
+    this.title = '源代码/来源'
     this._showLineNum = true
   }
   init($el, container) {

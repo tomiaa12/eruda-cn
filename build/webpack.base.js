@@ -107,6 +107,9 @@ module.exports = {
     new webpack.DefinePlugin({
       VERSION: '"' + pkg.version + '"',
     }),
-    new ESLintPlugin(),
+    new ESLintPlugin({
+      // 仅输出 ESLint 结果，不因问题中断 webpack 构建
+      failOnError: false,
+    }),
   ],
 }

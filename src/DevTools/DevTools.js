@@ -117,15 +117,17 @@ export default class DevTools extends Emitter {
     tool.active = false
     this._tools[name] = tool
 
+    const tabTitle = tool.title != null ? tool.title : name
+
     if (name === 'settings') {
       tab.append({
         id: name,
-        title: name,
+        title: tabTitle,
       })
     } else {
       tab.insert(tab.length - 1, {
         id: name,
-        title: name,
+        title: tabTitle,
       })
     }
 
@@ -208,19 +210,19 @@ export default class DevTools extends Emitter {
 
     settings
       .separator()
-      .select(cfg, 'theme', 'Theme', [
+      .select(cfg, 'theme', '主题', [
         'System preference',
         ...keys(evalCss.getThemes()),
       ])
 
     if (!this._inline) {
       settings
-        .range(cfg, 'transparency', 'Transparency', {
+        .range(cfg, 'transparency', '透明度', {
           min: 0.2,
           max: 1,
           step: 0.01,
         })
-        .range(cfg, 'displaySize', 'Display Size', {
+        .range(cfg, 'displaySize', '显示大小', {
           min: 40,
           max: 100,
           step: 1,
@@ -228,7 +230,7 @@ export default class DevTools extends Emitter {
     }
 
     settings
-      .button('Restore defaults and reload', function () {
+      .button('恢复默认并刷新', function () {
         const store = safeStorage('local')
 
         const data = JSON.parse(JSON.stringify(store))

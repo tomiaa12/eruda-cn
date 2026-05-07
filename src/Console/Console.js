@@ -22,12 +22,13 @@ import { classPrefix as c } from '../lib/util'
 uncaught.start()
 
 export default class Console extends Tool {
-  constructor({ name = 'console' } = {}) {
+  constructor({ name = 'console', title = '控制台' } = {}) {
     super()
 
     Emitter.mixin(this)
 
     this.name = name
+    this.title = title
     this._selectedLog = null
   }
   init($el, container) {
@@ -142,10 +143,10 @@ export default class Console extends Tool {
       c(`
       <div class="control">
         <span class="icon-clear clear-console"></span>
-        <span class="level active" data-level="all">All</span>
-        <span class="level" data-level="info">Info</span>
-        <span class="level" data-level="warning">Warning</span>
-        <span class="level" data-level="error">Error</span>
+        <span class="level active" data-level="all">默认</span>
+        <span class="level" data-level="info">信息</span>
+        <span class="level" data-level="warning">警告</span>
+        <span class="level" data-level="error">错误</span>
         <span class="filter-text"></span>
         <span class="icon-filter filter"></span>
         <span class="icon-copy icon-disabled copy"></span>
@@ -153,8 +154,8 @@ export default class Console extends Tool {
       <div class="logs-container"></div>
       <div class="js-input">
         <div class="buttons">
-          <div class="button cancel">Cancel</div>
-          <div class="button execute">Execute</div>
+          <div class="button cancel">取消</div>
+          <div class="button execute">运行</div>
         </div>
         <span class="icon-right"></span>
         <textarea></textarea>
@@ -235,13 +236,17 @@ export default class Console extends Tool {
       .on('click', c('.clear-console'), () => logger.clear(true))
       .on('click', c('.level'), function () {
         let level = $(this).data('level')
+        $control.find('.eruda-active').each((_,el) => {
+          $(el).rmClass('eruda-active')
+        })
+        $(this).addClass('eruda-active')
         if (level === 'all') {
           level = ['verbose', 'info', 'warning', 'error']
         }
         logger.setOption('level', level)
       })
       .on('click', c('.filter'), () => {
-        LunaModal.prompt('Filter').then((filter) => {
+        LunaModal.prompt('查找').then((filter) => {
           if (isNull(filter)) return
           this.filter(filter)
         })
@@ -267,7 +272,7 @@ export default class Console extends Tool {
     logger.on('insert', (log) => {
       const autoShow = log.type === 'error' && config.get('displayIfErr')
 
-      if (autoShow) container.showTool('console').show()
+      if (autoShow) container.showTool(this.name).show()
     })
 
     logger.on('select', (log) => {
@@ -357,16 +362,16 @@ export default class Console extends Tool {
 
     settings
       .text(upperFirst(this.name))
-      .switch(cfg, 'asyncRender', 'Asynchronous Rendering')
-      .switch(cfg, 'jsExecution', 'Enable JavaScript Execution')
-      .switch(cfg, 'catchGlobalErr', 'Catch Global Errors')
-      .switch(cfg, 'overrideConsole', 'Override Console')
-      .switch(cfg, 'displayIfErr', 'Auto Display If Error Occurs')
-      .switch(cfg, 'displayExtraInfo', 'Display Extra Information')
-      .switch(cfg, 'displayUnenumerable', 'Display Unenumerable Properties')
-      .switch(cfg, 'displayGetterVal', 'Access Getter Value')
-      .switch(cfg, 'lazyEvaluation', 'Lazy Evaluation')
-      .select(cfg, 'maxLogNum', 'Max Log Number', [
+      .switch(cfg, 'asyncRender', '异步渲染')
+      .switch(cfg, 'jsExecution', '启用JavaScript执行')
+      .switch(cfg, 'catchGlobalErr', '捕获全局错误')
+      .switch(cfg, 'overrideConsole', '覆盖控制台')
+      .switch(cfg, 'displayIfErr', '自动显示错误')
+      .switch(cfg, 'displayExtraInfo', '显示额外信息')
+      .switch(cfg, 'displayUnenumerable', '显示不可枚举属性')
+      .switch(cfg, 'displayGetterVal', '访问Getter值')
+      .switch(cfg, 'lazyEvaluation', '懒评估')
+      .select(cfg, 'maxLogNum', '最大日志数量', [
         'infinite',
         '250',
         '125',
