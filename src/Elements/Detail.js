@@ -379,7 +379,7 @@ export default class Detail {
     settings
       .remove(cfg, 'overrideEventTarget')
       .remove(cfg, 'observeElement')
-      .remove('Elements')
+      .remove(Settings.toolSectionLabel(this._devtools.get('elements')))
   }
   _initCfg() {
     const cfg = (this.config = Settings.createCfg('elements', {
@@ -399,8 +399,8 @@ export default class Detail {
     if (!settings) return
 
     settings
-      .text('Elements')
-      .switch(cfg, 'overrideEventTarget', 'Catch Event Listeners')
+      .text(Settings.toolSectionLabel(this._devtools.get('elements')))
+      .switch(cfg, 'overrideEventTarget', '捕获事件监听器')
 
     settings.separator()
   }

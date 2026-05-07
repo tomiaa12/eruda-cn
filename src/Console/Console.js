@@ -8,7 +8,6 @@ import isStr from 'licia/isStr'
 import isRegExp from 'licia/isRegExp'
 import uncaught from 'licia/uncaught'
 import trim from 'licia/trim'
-import upperFirst from 'licia/upperFirst'
 import isHidden from 'licia/isHidden'
 import isNull from 'licia/isNull'
 import isArr from 'licia/isArr'
@@ -18,6 +17,10 @@ import Settings from '../Settings/Settings'
 import LunaConsole from 'luna-console'
 import LunaModal from 'luna-modal'
 import { classPrefix as c } from '../lib/util'
+
+function isMaxLogUnlimited(val) {
+  return val === '无限' || val === 'infinite'
+}
 
 uncaught.start()
 
@@ -179,7 +182,7 @@ export default class Console extends Tool {
   _initLogger() {
     const cfg = this.config
     let maxLogNum = cfg.get('maxLogNum')
-    maxLogNum = maxLogNum === 'infinite' ? 0 : +maxLogNum
+    maxLogNum = isMaxLogUnlimited(maxLogNum) ? 0 : +maxLogNum
 
     const $level = this._$control.find(c('.level'))
     const logger = new LunaConsole(this._$logs.get(0), {
@@ -312,7 +315,7 @@ export default class Console extends Tool {
       .remove(cfg, 'lazyEvaluation')
       .remove(cfg, 'displayIfErr')
       .remove(cfg, 'maxLogNum')
-      .remove(upperFirst(this.name))
+      .remove(Settings.toolSectionLabel(this))
   }
   _initCfg() {
     const container = this._container
@@ -327,7 +330,7 @@ export default class Console extends Tool {
       displayGetterVal: true,
       lazyEvaluation: true,
       displayIfErr: false,
-      maxLogNum: 'infinite',
+      maxLogNum: '无限',
     }))
 
     this._enableJsExecution(cfg.get('jsExecution'))
@@ -345,7 +348,7 @@ export default class Console extends Tool {
         case 'overrideConsole':
           return val ? this.overrideConsole() : this.restoreConsole()
         case 'maxLogNum':
-          return logger.setOption('maxNum', val === 'infinite' ? 0 : +val)
+          return logger.setOption('maxNum', isMaxLogUnlimited(val) ? 0 : +val)
         case 'displayExtraInfo':
           return logger.setOption('showHeader', val)
         case 'displayUnenumerable':
@@ -361,7 +364,7 @@ export default class Console extends Tool {
     if (!settings) return
 
     settings
-      .text(upperFirst(this.name))
+      .text(Settings.toolSectionLabel(this))
       .switch(cfg, 'asyncRender', '异步渲染')
       .switch(cfg, 'jsExecution', '启用JavaScript执行')
       .switch(cfg, 'catchGlobalErr', '捕获全局错误')
@@ -372,7 +375,7 @@ export default class Console extends Tool {
       .switch(cfg, 'displayGetterVal', '访问Getter值')
       .switch(cfg, 'lazyEvaluation', '懒评估')
       .select(cfg, 'maxLogNum', '最大日志数量', [
-        'infinite',
+        '无限',
         '250',
         '125',
         '100',

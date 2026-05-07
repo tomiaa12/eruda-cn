@@ -118,7 +118,9 @@ export default class Sources extends Tool {
 
     if (!settings) return
 
-    settings.remove(cfg, 'showLineNum').remove('Sources')
+    settings
+      .remove(cfg, 'showLineNum')
+      .remove(Settings.toolSectionLabel(this))
   }
   _initCfg() {
     const cfg = (this.config = Settings.createCfg('sources', {
@@ -137,8 +139,8 @@ export default class Sources extends Tool {
 
     const settings = this._container.get('settings')
     settings
-      .text('Sources')
-      .switch(cfg, 'showLineNum', 'Show Line Numbers')
+      .text(Settings.toolSectionLabel(this))
+      .switch(cfg, 'showLineNum', '显示行号')
       .separator()
   }
   _render() {

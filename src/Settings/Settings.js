@@ -7,6 +7,7 @@ import filter from 'licia/filter'
 import isStr from 'licia/isStr'
 import contain from 'licia/contain'
 import clone from 'licia/clone'
+import upperFirst from 'licia/upperFirst'
 import evalCss from '../lib/evalCss'
 import LunaSetting from 'luna-setting'
 
@@ -147,5 +148,11 @@ export default class Settings extends Tool {
   }
   static createCfg(name, data) {
     return new LocalStore('eruda-' + name, data)
+  }
+  /** 设置页分组标题：优先用插件 {@link Tool} 的 title，否则用 name 首字母大写 */
+  static toolSectionLabel(tool) {
+    if (!tool) return ''
+    if (tool.title != null && tool.title !== '') return tool.title
+    return upperFirst(tool.name)
   }
 }

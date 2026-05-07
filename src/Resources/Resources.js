@@ -357,7 +357,7 @@ export default class Resources extends Tool {
     settings
       .remove(cfg, 'hideErudaSetting')
       .remove(cfg, 'observeElement')
-      .remove('Resources')
+      .remove(Settings.toolSectionLabel(this))
   }
   _initCfg() {
     const cfg = (this.config = Settings.createCfg('resources', {
@@ -381,9 +381,9 @@ export default class Resources extends Tool {
 
     const settings = this._container.get('settings')
     settings
-      .text('Resources')
-      .switch(cfg, 'hideErudaSetting', 'Hide Eruda Setting')
-      .switch(cfg, 'observeElement', 'Auto Refresh Elements')
+      .text(Settings.toolSectionLabel(this))
+      .switch(cfg, 'hideErudaSetting', '隐藏Eruda设置')
+      .switch(cfg, 'observeElement', '自动刷新元素')
       .separator()
   }
   _initObserver() {
