@@ -66,6 +66,10 @@ export default class DevTools extends Emitter {
   show() {
     this._isShow = true
 
+    if (!this._inline) {
+      this._$backdrop.show()
+    }
+
     this._$el.show()
     this._tab.updateSlider()
 
@@ -87,7 +91,12 @@ export default class DevTools extends Emitter {
     this.emit('hide')
 
     this._$el.css({ opacity: 0 })
-    setTimeout(() => this._$el.hide(), 300)
+    setTimeout(() => {
+      this._$el.hide()
+      if (!this._inline) {
+        this._$backdrop.hide()
+      }
+    }, 300)
 
     return this
   }
@@ -255,6 +264,7 @@ export default class DevTools extends Emitter {
     evalCss.remove(this._style)
     this.removeAll()
     this._tab.destroy()
+    this._$backdrop.remove()
     this._$el.remove()
     window.removeEventListener('resize', this._checkSafeArea)
     emitter.off(emitter.SCALE, this._updateTabHeight)
@@ -302,6 +312,7 @@ export default class DevTools extends Emitter {
 
     $container.append(
       c(`
+      <div class="dev-tools-backdrop"></div>
       <div class="dev-tools">
         <div class="resizer"></div>
         <div class="tab"></div>
@@ -312,6 +323,7 @@ export default class DevTools extends Emitter {
       `)
     )
 
+    this._$backdrop = $container.find(c('.dev-tools-backdrop'))
     this._$el = $container.find(c('.dev-tools'))
     this._$tools = this._$el.find(c('.tools'))
   }
@@ -393,6 +405,10 @@ export default class DevTools extends Emitter {
     }
     $resizer.css('height', 10)
     $resizer.on(pointerEvent('down'), startListener)
+
+    if (!this._inline) {
+      this._$backdrop.on('click', () => this.hide())
+    }
 
     $navBar.on('contextmenu', (e) => e.preventDefault())
     this.$container.on('click', (e) => e.stopPropagation())

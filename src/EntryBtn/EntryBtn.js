@@ -69,7 +69,7 @@ export default class EntryBtn extends Emitter {
     const $container = this._$container
 
     $container.append(
-      c('<div class="entry-btn"><span class="icon-tool"></span></div>')
+      c('<div class="entry-btn">调试面板</div>')
     )
     this._$el = $container.find('.eruda-entry-btn')
   }

@@ -1,6 +1,17 @@
 @use '../style/variable' as *;
 @use '../style/mixin' as *;
 
+.dev-tools-backdrop {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 400;
+  background: rgba(0, 0, 0, 0.35);
+}
+
 .dev-tools {
   position: absolute;
   width: 100%;

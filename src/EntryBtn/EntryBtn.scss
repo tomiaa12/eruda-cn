@@ -1,22 +1,17 @@
 .container {
   .entry-btn {
     touch-action: none;
-    width: 40px;
+    width: 80px;
     height: 40px;
     display: flex;
-    background: #000;
-    opacity: 0.3;
-    border-radius: 10px;
+    background: #3b5bdb;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 4px;
+    box-shadow: 0 4px 14px rgba(15, 30, 80, 0.42);
     position: relative;
     z-index: 1000;
-    transition: opacity 0.3s;
-    color: #fff;
-    font-size: 25px;
+    color: #f0f5ff;
     align-items: center;
     justify-content: center;
-    &.active,
-    &:active {
-      opacity: 0.8;
-    }
   }
 }
