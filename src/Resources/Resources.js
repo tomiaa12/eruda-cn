@@ -291,19 +291,19 @@ export default class Resources extends Tool {
 
     $el
       .on('click', '.eruda-refresh-script', () => {
-        container.notify('Refreshed', { icon: 'success' })
+        container.notify('刷新成功', { icon: 'success' })
         this.refreshScript()
       })
       .on('click', '.eruda-refresh-stylesheet', () => {
-        container.notify('Refreshed', { icon: 'success' })
+        container.notify('刷新成功', { icon: 'success' })
         this.refreshStylesheet()
       })
       .on('click', '.eruda-refresh-iframe', () => {
-        container.notify('Refreshed', { icon: 'success' })
+        container.notify('刷新成功', { icon: 'success' })
         this.refreshIframe()
       })
       .on('click', '.eruda-refresh-image', () => {
-        container.notify('Refreshed', { icon: 'success' })
+        container.notify('刷新成功', { icon: 'success' })
         this.refreshImage()
       })
       .on('click', '.eruda-img-link', function () {

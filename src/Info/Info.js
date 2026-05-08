@@ -113,7 +113,7 @@ export default class Info extends Tool {
       const name = $li.find(c('.title')).text()
       const content = $li.find(c('.content')).text()
       copy(`${name}: ${content}`)
-      container.notify('Copied', { icon: 'success' })
+      container.notify('复制成功', { icon: 'success' })
     })
   }
   _renderHtml(html) {

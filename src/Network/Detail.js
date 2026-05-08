@@ -118,7 +118,7 @@ export default class Detail extends Emitter {
     }
 
     copy(data)
-    this._devtools.notify('Copied', { icon: 'success' })
+    this._devtools.notify('复制成功', { icon: 'success' })
   }
   _bindEvent() {
     const devtools = this._devtools

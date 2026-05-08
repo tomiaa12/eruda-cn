@@ -227,7 +227,7 @@ export default class Elements extends Tool {
       copy(node.nodeValue)
     }
 
-    this._container.notify('Copied', { icon: 'success' })
+    this._container.notify('复制成功', { icon: 'success' })
   }
   _toggleSelect = () => {
     this._$el.find(c('.select')).toggleClass(c('active'))

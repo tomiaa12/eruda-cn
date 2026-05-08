@@ -256,7 +256,7 @@ export default class Console extends Tool {
       })
       .on('click', c('.copy'), () => {
         this._selectedLog.copy()
-        container.notify('Copied', { icon: 'success' })
+        container.notify('复制成功', { icon: 'success' })
       })
 
     $inputBtns

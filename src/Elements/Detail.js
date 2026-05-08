@@ -341,7 +341,7 @@ export default class Detail {
       .on('click', c('.back'), this.hide)
       .on('click', c('.refresh'), () => {
         this._render()
-        devtools.notify('Refreshed', { icon: 'success' })
+        devtools.notify('刷新成功', { icon: 'success' })
       })
 
     this._boxModel.on('highlight', this._highlight)

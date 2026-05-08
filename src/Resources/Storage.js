@@ -155,7 +155,7 @@ export default class Storage {
 
     this._$container
       .on('click', c('.refresh-storage'), () => {
-        devtools.notify('Refreshed', { icon: 'success' })
+        devtools.notify('刷新成功', { icon: 'success' })
         this.refresh()
       })
       .on('click', c('.clear-storage'), () => {
@@ -181,10 +181,10 @@ export default class Storage {
       .on('click', c('.copy-storage'), () => {
         const key = this._selectedItem
         copy(this._getVal(key))
-        devtools.notify('Copied', { icon: 'success' })
+        devtools.notify('复制成功', { icon: 'success' })
       })
       .on('click', c('.filter'), () => {
-        LunaModal.prompt('Filter').then((filter) => {
+        LunaModal.prompt('查找').then((filter) => {
           if (isNull(filter)) return
           filter = trim(filter)
           this._$filterText.text(filter)
