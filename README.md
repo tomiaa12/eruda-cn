@@ -4,82 +4,143 @@
   </a>
 </div>
 
-<h1 align="center">Eruda</h1>
+<h1 align="center">Eruda 中文版</h1>
 
 <div align="center">
 
-Console for Mobile Browsers.
+一个适用于移动端浏览器的前端调试控制台（中文增强版）。
 
-[![NPM version][npm-image]][npm-url]
-[![Build status][ci-image]][ci-url]
-[![Test coverage][codecov-image]][codecov-url]
-[![Downloads][jsdelivr-image]][jsdelivr-url]
-[![License][license-image]][npm-url]
+基于 Eruda 进行中文化与部分体验优化。
+
+[![NPM version](https://img.shields.io/npm/v/eruda-cn?style=flat-square)](https://www.npmjs.com/package/eruda-cn)
+[![License](https://img.shields.io/npm/l/eruda-cn?style=flat-square)](https://www.npmjs.com/package/eruda-cn)
 
 </div>
 
-[npm-image]: https://img.shields.io/npm/v/eruda?style=flat-square
-[npm-url]: https://npmjs.org/package/eruda
-[jsdelivr-image]: https://img.shields.io/jsdelivr/npm/hm/eruda?style=flat-square
-[jsdelivr-url]: https://www.jsdelivr.com/package/npm/eruda
-[ci-image]: https://img.shields.io/github/actions/workflow/status/liriliri/eruda/main.yml?branch=master&style=flat-square
-[ci-url]: https://github.com/liriliri/eruda/actions/workflows/main.yml 
-[codecov-image]: https://img.shields.io/codecov/c/github/liriliri/eruda?style=flat-square
-[codecov-url]: https://codecov.io/github/liriliri/eruda?branch=master
-[license-image]: https://img.shields.io/npm/l/eruda?style=flat-square
-[donate-image]: https://img.shields.io/badge/$-donate-0070ba.svg?style=flat-square
-
 <img src="https://eruda.liriliri.io/screenshot.jpg" style="width:100%">
 
-## Demo
+---
+
+## 介绍
+
+Eruda 是一个专为移动端网页设计的调试工具，可在手机浏览器中提供类似 Chrome DevTools 的调试能力。
+
+本仓库基于官方 Eruda 进行中文化处理，方便中文开发者在移动端进行：
+
+- Console 控制台调试
+- Network 网络请求查看
+- Elements 元素查看
+- Resources 资源管理
+- Sources 源码查看
+- Performance 性能分析
+- Storage 本地存储查看
+
+等功能。
+
+适用于：
+
+- H5 调试
+- WebView 调试
+- 移动端页面开发
+- Hybrid App 调试
+- 内嵌浏览器调试
+
+---
+
+## 在线 Demo
+
+访问官方演示站点：
+
+https://eruda.liriliri.io/
+
+手机扫码体验：
 
 ![Demo](https://eruda.liriliri.io/qrcode.png)
 
-Browse it on your phone: [eruda.liriliri.io](https://eruda.liriliri.io/)
+---
 
-## Install
+## 安装
 
-You can get it on npm.
+### npm
 
 ```bash
-npm install eruda --save-dev
+npm install eruda-cn
 ```
 
-Add this script to your page.
+### pnpm
+
+```bash
+pnpm add eruda-cn
+```
+
+---
+
+## 使用方式
 
 ```html
-<script src="node_modules/eruda/eruda.js"></script>
-<script>eruda.init();</script>
+<script src="node_modules/eruda-cn/eruda.js"></script>
+<script>
+  eruda.init()
+</script>
 ```
 
-It's also available on [jsDelivr](http://www.jsdelivr.com/projects/eruda) and [cdnjs](https://cdnjs.com/libraries/eruda).
+---
+
+## CDN 引入
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-<script>eruda.init();</script>
+<script src="https://cdn.jsdelivr.net/npm/eruda-cn"></script>
+<script>
+  eruda.init()
+</script>
 ```
 
-For more detailed usage instructions, please read the documentation at [eruda.liriliri.io](https://eruda.liriliri.io/docs/)!
+---
 
-## Related Projects
+## 功能截图
 
-* [eruda-android](https://github.com/liriliri/eruda-android): Simple webview with eruda loaded automatically.
-* [chii](https://github.com/liriliri/chii): Remote debugging tool.
-* [chobitsu](https://github.com/liriliri/chobitsu): Chrome devtools protocol JavaScript implementation.
-* [licia](https://github.com/liriliri/licia): Utility library used by eruda.
-* [luna](https://github.com/liriliri/luna): UI components used by eruda.
-* [vivy](https://github.com/liriliri/vivy-docs): Icon image generation.
+<img src="https://eruda.liriliri.io/screenshot.jpg" style="width:100%">
 
-## Third Party
+---
 
-* [eruda-pixel](https://github.com/Faithree/eruda-pixel): UI pixel restoration tool.
-* [eruda-webpack-plugin](https://github.com/huruji/eruda-webpack-plugin): Eruda webpack plugin.
-* [eruda-vue-devtools](https://github.com/Zippowxk/vue-devtools-plugin): Eruda Vue-devtools plugin.
+## 与官方版本的区别
 
-## Backers
+本项目主要包含：
 
-<a rel="noreferrer noopener" href="https://opencollective.com/eruda" target="_blank"><img src="https://opencollective.com/eruda/backers.svg?width=890"></a>
+- 中文界面翻译
+- 中文文案优化
+- 更适合中文开发者的使用体验
 
-## Contribution
+核心功能与官方 Eruda 保持一致。
 
-Read [Contributing Guide](https://eruda.liriliri.io/docs/contributing.html) for development setup instructions.
+---
+
+## 官方项目
+
+- Eruda 官方仓库：
+  https://github.com/liriliri/eruda
+
+- 官方文档：
+  https://eruda.liriliri.io/docs/
+
+---
+
+## 相关项目
+
+- chii
+  远程调试工具
+  https://github.com/liriliri/chii
+
+- chobitsu
+  Chrome DevTools Protocol JavaScript 实现
+  https://github.com/liriliri/chobitsu
+
+- eruda-webpack-plugin
+  Eruda Webpack 插件
+  https://github.com/huruji/eruda-webpack-plugin
+
+---
+
+## License
+
+MIT

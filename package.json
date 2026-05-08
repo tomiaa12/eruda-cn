@@ -1,7 +1,7 @@
 {
   "name": "eruda-cn",
-  "version": "3.4.3",
-  "description": "Console for Mobile Browsers",
+  "version": "3.4.31",
+  "description": "Eruda 中文版，一个适用于移动端浏览器的前端调试控制台，提供控制台、网络请求、元素查看、性能分析等功能。",
   "main": "eruda.js",
   "browserslist": [
     "since 2015",
