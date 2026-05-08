@@ -1,5 +1,5 @@
 {
-  "name": "eruda",
+  "name": "eruda-cn",
   "version": "3.4.3",
   "description": "Console for Mobile Browsers",
   "main": "eruda.js",
@@ -22,19 +22,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liriliri/eruda.git"
+    "url": "git+https://github.com/tomiaa12/eruda-cn.git"
   },
   "keywords": [
     "console",
     "mobile",
     "debug"
   ],
-  "author": "redhoodsu",
+  "author": "tomiaa",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/liriliri/eruda/issues"
+    "url": "https://github.com/tomiaa12/eruda-cn/issues"
   },
-  "homepage": "https://eruda.liriliri.io/",
+  "homepage": "https://kuangyx.cn/",
   "devDependencies": {
     "@babel/core": "^7.18.6",
     "@babel/eslint-parser": "^7.26.10",
