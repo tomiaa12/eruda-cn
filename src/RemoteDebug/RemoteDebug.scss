@@ -1,0 +1,93 @@
+@use '../style/variable' as *;
+@use '../style/mixin' as *;
+
+#remoteDebug {
+  @include overflow-auto(y);
+  padding: $padding;
+
+  .section {
+    border: 1px solid var(--border);
+    padding: $padding;
+    color: var(--foreground);
+    background: var(--background);
+  }
+
+  .title {
+    color: var(--primary);
+    font-size: $font-size;
+  }
+
+  .description,
+  .notice,
+  .meta {
+    color: var(--foreground);
+    font-size: $font-size-s;
+    line-height: 1.7;
+  }
+
+  .description {
+    margin: 8px 0 0;
+  }
+
+  .actions {
+    margin-top: 10px;
+  }
+
+  .button {
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--select-foreground);
+    font-size: $font-size-s;
+    line-height: 18px;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition:
+      opacity $anim-duration,
+      background-color $anim-duration;
+
+    &:active {
+      background: var(--highlight);
+    }
+
+    &[disabled] {
+      cursor: default;
+      opacity: 0.65;
+    }
+  }
+
+  .notice {
+    margin-top: 10px;
+    border: 1px solid var(--border);
+    padding: $padding;
+    background: var(--darker-background);
+
+    &[data-tone='error'] {
+      color: var(--console-error-foreground);
+    }
+  }
+
+  .link {
+    color: var(--link-color);
+    user-select: text;
+    word-break: break-all;
+  }
+
+  .meta {
+    margin-top: 6px;
+  }
+
+  .code {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 2px 6px;
+    color: var(--primary);
+    background: var(--background);
+    font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    user-select: text;
+    word-break: break-all;
+  }
+}
+
+.safe-area #remoteDebug {
+  @include safe-area(padding-bottom, 10px);
+}

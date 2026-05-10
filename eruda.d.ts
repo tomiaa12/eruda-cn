@@ -316,6 +316,20 @@ declare module 'eruda' {
     readonly prototype: Snippets
   }
 
+  export interface UserInfo extends Tool {}
+
+  export interface UserInfoConstructor {
+    new (): UserInfo
+    readonly prototype: UserInfo
+  }
+
+  export interface RemoteDebug extends Tool {}
+
+  export interface RemoteDebugConstructor {
+    new (): RemoteDebug
+    readonly prototype: RemoteDebug
+  }
+
   export interface SettingsRangeOptions {
     min?: number
     max?: number
@@ -428,6 +442,8 @@ declare module 'eruda' {
     settings: InstanceType<SettingsConstructor>
     snippets: InstanceType<SnippetsConstructor>
     sources: InstanceType<SourcesConstructor>
+    userInfo: InstanceType<UserInfoConstructor>
+    remoteDebug: InstanceType<RemoteDebugConstructor>
     entryBtn: InstanceType<EntryBtnConstructor>
   }
 
@@ -516,6 +532,14 @@ declare module 'eruda' {
      * View object, html, js, and css.
      */
     Sources: SourcesConstructor
+    /**
+     * Load Chii remote debugging target.
+     */
+    RemoteDebug: RemoteDebugConstructor
+    /**
+     * 从页面 storage 读取 userInfo、session、rndKey 等登录态信息。
+     */
+    UserInfo: UserInfoConstructor
     /**
      * Eruda Tool
      */

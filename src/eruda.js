@@ -9,6 +9,8 @@ import Resources from './Resources/Resources'
 import Info from './Info/Info'
 import Sources from './Sources/Sources'
 import Settings from './Settings/Settings'
+import RemoteDebug from './RemoteDebug/RemoteDebug'
+import UserInfo from './UserInfo/UserInfo'
 import emitter from './lib/emitter'
 import logger from './lib/logger'
 import * as util from './lib/util'
@@ -97,6 +99,8 @@ export default {
   Info,
   Snippets,
   Settings,
+  RemoteDebug,
+  UserInfo,
   get(name) {
     if (!this._checkInit()) return
 
@@ -289,6 +293,7 @@ export default {
   },
   _initTools(
     tool = [
+      'userInfo',
       'console',
       'elements',
       'network',
@@ -296,6 +301,7 @@ export default {
       'sources',
       'info',
       'snippets',
+      'remoteDebug',
     ]
   ) {
     tool = toArr(tool)
