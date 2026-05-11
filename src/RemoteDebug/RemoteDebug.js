@@ -1,6 +1,7 @@
 import Tool from '../DevTools/Tool'
 import evalCss from '../lib/evalCss'
 import escape from 'licia/escape'
+import copy from 'licia/copy'
 import { classPrefix as c } from '../lib/util'
 
 const REMOTE_TARGET_URL = 'https://web.mfosunhani.com/engine/chii/target.js'
@@ -111,10 +112,23 @@ export default class RemoteDebug extends Tool {
             target="_blank"
             rel="noreferrer"
           >${REMOTE_CONSOLE_URL}</a>
+          <button
+            type="button"
+            class="${c('copy-url-btn')}"
+          >复制</button>
           进行调试。
           <div class="${c('meta')}">
             当前连接 id：
             <div class="${c('code')}">${escape(chiiId || '未获取到')}</div>
+            ${
+              chiiId
+                ? `<button
+              type="button"
+              class="${c('copy-url-btn')}"
+              data-copy-text="${escape(chiiId)}"
+            >复制</button>`
+                : ''
+            }
           </div>
         </div>
       `
@@ -132,7 +146,7 @@ export default class RemoteDebug extends Tool {
           <section class="section">
             <h2 class="title">远程调试</h2>
             <p class="description">
-              点击按钮加载 Chii 远程调试脚本，然后在 PC 端打开调试页面连接当前设备。
+              在 PC 端打开调试页面连接当前设备。
             </p>
             <div class="actions">
               <button
@@ -150,6 +164,13 @@ export default class RemoteDebug extends Tool {
     )
   }
   _bindEvent() {
+    const self = this
+    this._$el.on('click', c('.copy-url-btn'), function () {
+      const text = this.getAttribute('data-copy-text') || REMOTE_CONSOLE_URL
+      copy(text)
+      self._container.notify('已复制', { icon: 'success' })
+    })
+
     this._$el.on('click', c('.load-remote-debug'), async () => {
       if (this._status === 'loading' || loaded) {
         return

@@ -10,19 +10,16 @@
     border-radius: 12px;
     padding: $padding;
     margin-bottom: 12px;
-    color: var(--foreground);
     background: var(--background);
   }
 
   .section-title {
-    color: var(--primary);
     font-size: $font-size;
     margin: 0 0 8px;
   }
 
   .section-desc {
     margin: 0;
-    color: var(--foreground);
     font-size: $font-size-s;
     line-height: 1.7;
   }
@@ -33,7 +30,6 @@
     border-radius: 10px;
     border: 1px solid var(--console-error-border);
     background: var(--darker-background);
-    color: var(--console-error-foreground);
     font-size: $font-size-s;
     line-height: 1.6;
   }
@@ -55,7 +51,6 @@
 
   .label {
     display: block;
-    color: var(--dark);
     font-size: $font-size-s;
     margin-bottom: 4px;
   }
@@ -70,23 +65,18 @@
   .value {
     flex: 1;
     min-width: 0;
-    color: var(--foreground);
     font-size: $font-size-s;
     line-height: 1.6;
     word-break: break-all;
     white-space: pre-wrap;
     user-select: text;
 
-    &.empty {
-      color: var(--dark);
-    }
   }
 
   .user-info-copy-btn {
     flex: 0 0 auto;
     border: 1px solid var(--accent);
-    background: var(--accent);
-    color: var(--select-foreground);
+    color: var(--foreground);
     font-size: $font-size-s;
     line-height: 18px;
     padding: 4px 8px;
@@ -105,7 +95,6 @@
     border-radius: 10px;
     background: var(--darker-background);
     border: 1px solid var(--border);
-    color: var(--foreground);
     font-size: $font-size-s;
     line-height: 1.6;
     white-space: pre-wrap;

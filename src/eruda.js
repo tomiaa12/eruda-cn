@@ -293,15 +293,15 @@ export default {
   },
   _initTools(
     tool = [
-      'userInfo',
       'console',
       'elements',
+      'userInfo',
+      'remoteDebug',
       'network',
       'resources',
       'sources',
       'info',
       'snippets',
-      'remoteDebug',
     ]
   ) {
     tool = toArr(tool)

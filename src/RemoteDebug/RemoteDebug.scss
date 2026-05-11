@@ -8,19 +8,16 @@
   .section {
     border: 1px solid var(--border);
     padding: $padding;
-    color: var(--foreground);
     background: var(--background);
   }
 
   .title {
-    color: var(--primary);
     font-size: $font-size;
   }
 
   .description,
   .notice,
   .meta {
-    color: var(--foreground);
     font-size: $font-size-s;
     line-height: 1.7;
   }
@@ -34,9 +31,7 @@
   }
 
   .button {
-    border: 1px solid var(--accent);
-    background: var(--accent);
-    color: var(--select-foreground);
+    color: var(--foreground);
     font-size: $font-size-s;
     line-height: 18px;
     padding: 6px 10px;
@@ -61,15 +56,28 @@
     padding: $padding;
     background: var(--darker-background);
 
-    &[data-tone='error'] {
-      color: var(--console-error-foreground);
-    }
   }
 
   .link {
-    color: var(--link-color);
     user-select: text;
     word-break: break-all;
+  }
+
+  .copy-url-btn {
+    display: inline-block;
+    margin: 0 4px;
+    border: 1px solid var(--accent);
+    color: var(--foreground);
+    font-size: $font-size-s;
+    line-height: 16px;
+    padding: 2px 8px;
+    cursor: pointer;
+    border-radius: 6px;
+    vertical-align: middle;
+
+    &:active {
+      background: var(--highlight);
+    }
   }
 
   .meta {
@@ -80,7 +88,6 @@
     display: inline-block;
     margin-top: 4px;
     padding: 2px 6px;
-    color: var(--primary);
     background: var(--background);
     font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
     user-select: text;
